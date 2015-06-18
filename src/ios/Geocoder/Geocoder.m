@@ -37,52 +37,7 @@
   }
 
   if (address && position == nil) {
-  
-    NSArray *points = [json objectForKey:@"bounds"];
-  
-    if (points) {
-      //center
-      int i = 0;
-      NSDictionary *latLng;
-      GMSMutablePath *path = [GMSMutablePath path];
-      GMSCoordinateBounds *bounds;
-      for (i = 0; i < points.count; i++) {
-        latLng = [points objectAtIndex:i];  
-        [path addCoordinate:CLLocationCoordinate2DMake([[latLng objectForKey:@"lat"] floatValue], [[latLng objectForKey:@"lng"] floatValue])];
-      }
-      bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
-  
-      
-      CLLocationCoordinate2D southWest = bounds.southWest;
-      CLLocationCoordinate2D northEast = bounds.northEast;
-      float latitude = (southWest.latitude + northEast.latitude) / 2.0;
-      float longitude = (southWest.longitude + northEast.longitude) / 2.0;
-      CLLocationCoordinate2D center = CLLocationCoordinate2DMake(latitude, longitude);
 
-      //distance
-      CLLocation *locA = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.latitude];
-      CLLocation *locB = [[CLLocation alloc] initWithLatitude:southWest.latitude longitude:southWest.longitude];
-      CLLocationDistance distance = [locA distanceFromLocation:locB];
-      
-      CLCircularRegion *region =  [[CLCircularRegion alloc] initWithCenter:center radius:distance/2 identifier:@"geocoder"];
-      
-      
-      [self.geocoder geocodeAddressString:address inRegion:region completionHandler:^(NSArray *placemarks, NSError *error) {
-        CDVPluginResult* pluginResult;
-        if (error) {
-          if (placemarks.count == 0) {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Not found"];
-          } else {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.description];
-          }
-        } else {
-          NSArray *results = [self geocoder_callback:placemarks error:error];
-          pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:results];
-        }
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-      }];
-      
-    } else {
       //No region specified.
       [self.geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
         CDVPluginResult* pluginResult;
@@ -98,7 +53,6 @@
         }
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
       }];
-    }
     return;
   }
   

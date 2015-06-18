@@ -25,6 +25,4 @@ Geocoder.geocode = function(geocoderRequest, callback) {
   pluginExec();
 };
 
-module.exports = {
-  Geocoder: Geocoder
-};
+module.exports = Geocoder

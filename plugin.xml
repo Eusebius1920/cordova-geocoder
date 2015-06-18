@@ -2,7 +2,7 @@
 <plugin id="eusebius.cordova.plugin.geocoder" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>cordova-geocoder</name>
     <js-module name="cordova-geocoder" src="www/cordova-geocoder.js">
-        <clobbers target="cordova.plugins" />
+        <clobbers target="cordova.plugins.Geocoder" />
     </js-module>
     
     <description>A simple geocoder for cordova (Android, iOS)</description>
@@ -49,22 +49,5 @@
 
         <header-file src="src/ios/Geocoder/Geocoder.h" />
         <source-file src="src/ios/Geocoder/Geocoder.m" />
-        <header-file src="src/ios/Geocoder/PluginUtil.h" />
-        <source-file src="src/ios/Geocoder/PluginUtil.m" />
-        
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-          <array>
-            <dict>
-              <key>CFBundleTypeRole</key>
-              <string>Editor</string>
-              <key>CFBundleURLName</key>
-              <string>$PACKAGE_NAME</string>
-              <key>CFBundleURLSchemes</key>
-              <array>
-                <string>$PACKAGE_NAME</string>
-              </array>
-            </dict>
-          </array>
-        </config-file>
     </platform>
 </plugin>

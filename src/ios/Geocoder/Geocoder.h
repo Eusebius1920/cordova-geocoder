@@ -5,9 +5,7 @@
 //  Created by Katsumata Masashi on 12/29/13.
 //
 //
-
-#import "GoogleMaps.h"
-#import "PluginUtil.h"
+#import <Cordova/CDV.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface Geocoder : CDVPlugin
