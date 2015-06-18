@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="eusebius.cordova.plugin.geocoder" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-geocoder</name>
+    <js-module name="cordova-geocoder" src="www/cordova-geocoder.js">
+        <clobbers target="cordova.plugins" />
+    </js-module>
+    
+    <description>A simple geocoder for cordova (Android, iOS)</description>
+    <license>Apache 2.0</license>    
+    <keywords>geo,geocoder,reverse geocoder,inverse geocoder</keywords>
+    
+    <engines>
+      <engine name="cordova" version=">=3.5.0" />
+    </engines>
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Geocoder">
+                <param name="android-package" value="eusebius.cordova.plugin.geocoder.MyGeocoder" />
+            </feature>
+        </config-file>
+
+        <dependency id="com.google.playservices" url="https://github.com/wf9a5m75/google-play-services#v23" />
+    
+        <!-- plugin src files -->
+        <source-file src="src/android/eusebius/cordova/plugin/geocoder/MyGeocoder.java" target-dir="src/eusebius/cordova/plugin/geocoder" />
+		<source-file src="src/android/eusebius/cordova/plugin/geocoder/PluginUtil.java" target-dir="src/eusebius/cordova/plugin/geocoder" />
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <!-- Google Play Services SDK -->
+            <meta-data android:name="com.google.android.gms.version"
+                       android:value="@integer/google_play_services_version" />
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET"/>
+        </config-file>
+    </platform>
+    
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="Geocoder">
+                <param name="ios-package" value="Geocoder" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/Geocoder/Geocoder.h" />
+        <source-file src="src/ios/Geocoder/Geocoder.m" />
+        <header-file src="src/ios/Geocoder/PluginUtil.h" />
+        <source-file src="src/ios/Geocoder/PluginUtil.m" />
+        
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+          <array>
+            <dict>
+              <key>CFBundleTypeRole</key>
+              <string>Editor</string>
+              <key>CFBundleURLName</key>
+              <string>$PACKAGE_NAME</string>
+              <key>CFBundleURLSchemes</key>
+              <array>
+                <string>$PACKAGE_NAME</string>
+              </array>
+            </dict>
+          </array>
+        </config-file>
+    </platform>
+</plugin>
