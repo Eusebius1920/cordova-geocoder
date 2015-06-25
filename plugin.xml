@@ -20,18 +20,9 @@
                 <param name="android-package" value="eusebius.cordova.plugin.geocoder.MyGeocoder" />
             </feature>
         </config-file>
-
-        <dependency id="com.google.playservices" url="https://github.com/wf9a5m75/google-play-services#v23" />
     
         <!-- plugin src files -->
         <source-file src="src/android/eusebius/cordova/plugin/geocoder/MyGeocoder.java" target-dir="src/eusebius/cordova/plugin/geocoder" />
-		<source-file src="src/android/eusebius/cordova/plugin/geocoder/PluginUtil.java" target-dir="src/eusebius/cordova/plugin/geocoder" />
-        
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <!-- Google Play Services SDK -->
-            <meta-data android:name="com.google.android.gms.version"
-                       android:value="@integer/google_play_services_version" />
-        </config-file>
         
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.INTERNET"/>

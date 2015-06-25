@@ -17,8 +17,6 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLngBounds;
-
 public class MyGeocoder extends CordovaPlugin {
 
   @Override
@@ -49,26 +47,7 @@ public class MyGeocoder extends CordovaPlugin {
 
     // Geocoding
     if (opts.has("position") == false && opts.has("address")) {
-      String address = opts.getString("address");
-      if (opts.has("bounds")) {
-        if (opts.has("bounds") == true) {
-          JSONArray points = opts.getJSONArray("bounds");
-          LatLngBounds bounds = PluginUtil.JSONArray2LatLngBounds(points);
-          try {
-            geoResults = geocoder.getFromLocationName(address, 20,
-                bounds.southwest.latitude, bounds.southwest.longitude,
-                bounds.northeast.latitude, bounds.northeast.longitude);
-          }catch (Exception e) {
-            callbackContext.error("Geocoder service is not available.");
-            return;
-          }
-          if (geoResults.size() == 0) {
-            callbackContext.error("Not found");
-            return;
-          }
-          iterator = geoResults.iterator();
-        }
-      } else {
+      String address = opts.getString("address"); 
         try {
           geoResults = geocoder.getFromLocationName(address, 20);
         }catch (Exception e) {
@@ -80,7 +59,6 @@ public class MyGeocoder extends CordovaPlugin {
           return;
         }
         iterator = geoResults.iterator();
-      }
     }
 
     // Reverse geocoding
