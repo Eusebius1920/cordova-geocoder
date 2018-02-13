@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="eusebius.cordova.plugin.geocoder" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="eusebius.cordova.plugin.geocoder" version="1.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>cordova-geocoder</name>
     <js-module name="cordova-geocoder" src="www/cordova-geocoder.js">
         <clobbers target="cordova.plugins.Geocoder" />
     </js-module>
-    
+
     <description>A simple geocoder for cordova (Android, iOS)</description>
-    <license>Apache 2.0</license>    
+    <license>Apache 2.0</license>
     <keywords>geo,geocoder,reverse geocoder,inverse geocoder</keywords>
-    
+
     <engines>
       <engine name="cordova" version=">=3.5.0" />
     </engines>
-    
+
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -20,15 +20,15 @@
                 <param name="android-package" value="eusebius.cordova.plugin.geocoder.MyGeocoder" />
             </feature>
         </config-file>
-    
+
         <!-- plugin src files -->
         <source-file src="src/android/eusebius/cordova/plugin/geocoder/MyGeocoder.java" target-dir="src/eusebius/cordova/plugin/geocoder" />
-        
+
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.INTERNET"/>
         </config-file>
     </platform>
-    
+
     <!-- ios -->
     <platform name="ios">
 

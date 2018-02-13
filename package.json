@@ -1,0 +1,37 @@
+{
+  "name": "cordova-geocoder",
+  "version": "1.0.2",
+  "description": "A simple geocoder for cordova (Android, iOS)",
+  "cordova": {
+    "id": "eusebius.cordova.plugin.geocoder",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eusebius1920/cordova-geocoder.git"
+  },
+  "keywords": [
+    "geo",
+    "geocoder",
+    "reverse geocoder",
+    "inverse geocoder",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.5.0"
+    }
+  ],
+  "author": "Eusebius1920",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/Eusebius1920/cordova-geocoder/issues"
+  },
+  "homepage": "https://github.com/Eusebius1920/cordova-geocoder#readme"
+}
