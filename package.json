@@ -1,6 +1,6 @@
 {
   "name": "cordova-geocoder",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple geocoder for cordova (Android, iOS)",
   "cordova": {
     "id": "cordova-geocoder",

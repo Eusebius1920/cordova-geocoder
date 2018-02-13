@@ -5,7 +5,7 @@ var Geocoder = {};
 
 Geocoder.geocode = function(geocoderRequest, callback) {
   geocoderRequest = geocoderRequest || {};
-  
+
   if ("position" in geocoderRequest) {
     geocoderRequest.position.lat = geocoderRequest.position.lat || 0.0;
     geocoderRequest.position.lng = geocoderRequest.position.lng || 0.0;
@@ -21,7 +21,7 @@ Geocoder.geocode = function(geocoderRequest, callback) {
       }
     }, "Geocoder", 'geocode', [geocoderRequest]);
   };
-  
+
   pluginExec();
 };
 
